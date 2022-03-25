@@ -1,2 +1,5 @@
-build:
-	gcc main.c -o yahtzee
+TARGET= yahtzee
+$(TARGET): main.c
+	cc -o $(TARGET) main.c
+run: $(TARGET)
+	./$(TARGET)
