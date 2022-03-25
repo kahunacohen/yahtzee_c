@@ -4,17 +4,22 @@
 #define NUM_DICE_SIDES 6
 #define NUM_DICE 5
 
-
+void usage(void);
 char* roll_dice(void);
 char roll_die(void);
 
 int main(int argc, char *argv[] ) {
+    usage();
     srand(time(NULL));
     char* rolls = roll_dice();
     for (int i = 0; i < NUM_DICE; i++) {
         printf("die: %d\n", rolls[i]);
     }
     free(rolls);
+}
+
+void usage(void) {
+    printf("NAME\n\tyahtzee - simulate yahtzee games and report probability of selected rolls.\n");
 }
 
 /**
@@ -33,7 +38,7 @@ char roll_die(void) {
  * @param b 
  * @return int 
  */
-int sort_compare(const char * a, const char * b) {
+int comparator(const void * a, const void * b) {
    return ( *(char*)a - *(char*)b );
 }
 
@@ -53,6 +58,7 @@ char* roll_dice(void) {
     for (int i = 0; i < NUM_DICE; i++ ) {
         rolls[i] = roll_die();
     }
-    qsort(rolls, NUM_DICE, sizeof(char), sort_compare);
+
+    qsort(rolls, NUM_DICE, sizeof(char), comparator);
     return rolls;
 }
