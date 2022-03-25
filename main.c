@@ -5,7 +5,6 @@
 #define NUM_DICE 5
 
 
-
 char* roll_dice(void);
 char roll_die(void);
 
@@ -18,12 +17,26 @@ int main(int argc, char *argv[] ) {
     free(rolls);
 }
 
+/**
+ * @brief Roll one die.
+ * 
+ * @return char 
+ */
 char roll_die(void) {
     return (rand() % NUM_DICE_SIDES) + 1;
 }
+
+/**
+ * @brief Compare function for sorting a roll of n dice.
+ * 
+ * @param a 
+ * @param b 
+ * @return int 
+ */
 int sort_compare(const char * a, const char * b) {
    return ( *(char*)a - *(char*)b );
 }
+
 /**
  * @brief Roll a series of 5 die.
  * @return char* A sorted array of 5 die rolls.
