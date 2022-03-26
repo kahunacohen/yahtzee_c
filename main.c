@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h> 
 #include <stdlib.h>
 #include <time.h>
@@ -8,15 +9,19 @@
 void usage(void);
 char* roll_dice(char);
 char roll_die(void);
+_Bool is_yahtzee(char*, char n_die);
+size_t get_n_dice_in_roll(char*, char n_die);
 
 int main(int argc, char *argv[] ) {
     //usage();
     srand(time(NULL));
     char n_die = 5;
     char* rolls = roll_dice(n_die);
+
     for (int i = 0; i < n_die; i++) {
         printf("rolled: %d\n", rolls[i]);
     }
+    printf("%d", is_yahtzee(rolls, n_die));
     free(rolls);
 }
 
@@ -43,6 +48,20 @@ char roll_die(void) {
 int comparator(const void * a, const void * b) {
    return ( *(char*)a - *(char*)b );
 }
+
+_Bool is_yahtzee(char* roll, char n_die) {
+    char last;
+    for (int i = 0; i <= n_die; i++) {
+        if (i > 0) {
+            if (roll[i] != last) {
+                return false;
+            }
+        }
+        last = roll[i];
+    }
+    return true;
+}
+
 
 /**
  * @brief Roll a series of n die.
