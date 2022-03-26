@@ -1,19 +1,21 @@
+#include <assert.h>
 #include <stdio.h> 
 #include <stdlib.h>
 #include <time.h>
-#define NUM_DICE_SIDES 6
-#define NUM_DICE 5
+#define DIE_SIDES 6
+#define MAX_DICE_PER_ROLL 5
 
 void usage(void);
-char* roll_dice(void);
+char* roll_dice(char);
 char roll_die(void);
 
 int main(int argc, char *argv[] ) {
-    usage();
+    //usage();
     srand(time(NULL));
-    char* rolls = roll_dice();
-    for (int i = 0; i < NUM_DICE; i++) {
-        printf("die: %d\n", rolls[i]);
+    char n_die = 5;
+    char* rolls = roll_dice(n_die);
+    for (int i = 0; i < n_die; i++) {
+        printf("rolled: %d\n", rolls[i]);
     }
     free(rolls);
 }
@@ -28,7 +30,7 @@ void usage(void) {
  * @return char 
  */
 char roll_die(void) {
-    return (rand() % NUM_DICE_SIDES) + 1;
+    return (rand() % DIE_SIDES) + 1;
 }
 
 /**
@@ -43,22 +45,23 @@ int comparator(const void * a, const void * b) {
 }
 
 /**
- * @brief Roll a series of 5 die.
+ * @brief Roll a series of n die.
+ * @param n_die - Number of die to roll (between 1-5).
  * @return char* A sorted array of 5 die rolls.
  * The caller is responsible for freeing the memory allocated
  * for the array of rolls.
  */
-char* roll_dice(void) {
-    size_t size_of_alloc =  NUM_DICE * sizeof(char);
+char* roll_dice(char n_die) {
+    assert(n_die > 0 && n_die <= MAX_DICE_PER_ROLL);
+    size_t size_of_alloc =  n_die * sizeof(char);
     char *rolls = malloc(size_of_alloc);
     if (rolls == NULL) {
         fprintf(stderr, "Fatal: failed to allocate %zu bytes when rolling dice.\n", size_of_alloc);
         exit(1);
     }
-    for (int i = 0; i < NUM_DICE; i++ ) {
+    for (int i = 0; i <= n_die; i++ ) {
         rolls[i] = roll_die();
     }
-
-    qsort(rolls, NUM_DICE, sizeof(char), comparator);
+    qsort(rolls, n_die, sizeof(char), comparator);
     return rolls;
 }
