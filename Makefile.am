@@ -17,3 +17,6 @@ clean-local: clean
 	rm install-sh
 	rm Makefile
 	rm missing
+run:
+	make
+	./yahtzee
