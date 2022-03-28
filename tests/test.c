@@ -1,7 +1,10 @@
+#include <stdio.h>
 #include <check.h>
+#include "../src/lib.h"
 
 START_TEST (sanity_check)
 {
+    printf("hey: %d\n", foo());
     fail_unless(5 == 5, "this should succeed");
     fail_unless(6 == 5, "this should fail");
 }

@@ -3,6 +3,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include <time.h>
+#include "lib.h"
 #define DIE_SIDES 6
 #define MAX_DICE_PER_ROLL 5
 
