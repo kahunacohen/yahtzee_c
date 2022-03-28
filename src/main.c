@@ -54,6 +54,7 @@ int comparator(const void * a, const void * b) {
    return ( *(char*)a - *(char*)b );
 }
 
+
 _Bool is_yahtzee(char* roll, char n_die) {
     char last;
     for (int i = 0; i <= n_die; i++) {
