@@ -42,7 +42,7 @@ char* roll_dice(char n_die) {
         fprintf(stderr, "Fatal: failed to allocate %zu bytes when rolling dice.\n", size_of_alloc);
         exit(1);
     }
-    for (int i = 0; i <= n_die; i++ ) {
+    for (int i = 0; i <= n_die -1; i++ ) {
         rolls[i] = roll_die();
     }
     qsort(rolls, n_die, sizeof(char), comparator);

@@ -9,7 +9,7 @@ _Bool is_yahtzee(char*, char n_die);
 
 _Bool is_yahtzee(char* roll, char n_die) {
     char last;
-    for (int i = 0; i <= n_die; i++) {
+    for (int i = 0; i <= n_die - 1; i++) {
         if (i > 0) {
             if (roll[i] != last) {
                 return false;
