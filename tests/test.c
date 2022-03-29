@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <check.h>
+#include "../src/dice.h"
 
-START_TEST (sanity_check)
+START_TEST (roll_die_returns_correct_amount)
 {
-    fail_unless(5 == 5, "this should succeed");
-    fail_unless(6 == 5, "this should fail");
+    for (int i = 0; i < 20; i++) {
+      char result = roll_die();
+      fail_unless(result > 0 && result <=6);
+    }
 }
 END_TEST
 
@@ -16,7 +19,7 @@ int main(void)
     int nf;
 
     suite_add_tcase(s1, tc1_1);
-    tcase_add_test(tc1_1, sanity_check);
+    tcase_add_test(tc1_1, roll_die_returns_correct_amount);
 
     srunner_run_all(sr, CK_ENV);
     nf = srunner_ntests_failed(sr);
