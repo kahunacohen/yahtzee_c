@@ -12,14 +12,16 @@ Roll roll_dice(int);
 int roll_die(void);
 
 /**
- * @brief Roll one die.
- * 
- * @return char 
+ * Roll one die.
  */
 int roll_die(void) {
     return (rand() % DIE_SIDES) + 1;
 }
 
+/**
+ * Roll n dice. If less than 6 die are
+ * rolled, zeros out the remaining slots.
+ */
 Roll roll_dice(int num_dice) {
     Roll roll;
     roll.num_dice = num_dice;
