@@ -5,8 +5,7 @@ build:
 run: build
 	./yahtzee
 build_test:
-
-	gcc ./tests/test.c -Wall -o test -lcheck -pthread -pthread -lm	
+	gcc ./tests/test_roll.c -Wall -o test_roll -lcheck -pthread -pthread -lm	
 test: build build_test
-	./test
+	./test_roll
 
