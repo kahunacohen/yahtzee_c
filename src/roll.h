@@ -8,8 +8,9 @@ typedef struct Roll {
     int   num_dice;
 } Roll;
 
-Roll* roll_dice(int);
+void roll_dice(Roll*, int num_dice);
 int roll_die(void);
+int* get_dice(Roll*);
 
 /**
  * Roll one die.
@@ -18,20 +19,18 @@ int roll_die(void) {
     return (rand() % DIE_SIDES) + 1;
 }
 
-/**
- * Roll n dice. If less than 6 die are
- * rolled, zeros out the remaining slots.
- */
-Roll* roll_dice(int num_dice) {
-    static Roll roll;
-    roll.num_dice = num_dice;
+void roll_dice(Roll* roll, int num_dice) {
+    roll->num_dice = num_dice;
     for (int i = 0; i < MAX_DICE_PER_ROLL; i++) {
-        if (i < num_dice) {
-            roll.dice[i] = roll_die();
-        } else {
-            // Zero out dice that are not rolled.
-            roll.dice[i] = 0;
-        }
+        roll->dice[i] = roll_die();
     }
-    return &roll;
 }
+
+int* get_dice(Roll* roll) {
+    int* arr[roll->num_dice];
+    for (int i = 0; i < roll->dice; i++) {
+        arr[i] = roll->dice[i];
+    }
+    return arr;
+}
+
