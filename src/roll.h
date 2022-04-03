@@ -26,11 +26,3 @@ void roll_dice(Roll* roll, int num_dice) {
     }
 }
 
-int* get_dice(Roll* roll) {
-    int* arr[roll->num_dice];
-    for (int i = 0; i < roll->dice; i++) {
-        arr[i] = roll->dice[i];
-    }
-    return arr;
-}
-

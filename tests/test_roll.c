@@ -11,13 +11,6 @@ START_TEST (roll_dice_test) {
 }
 END_TEST
 
-START_TEST (get_dice_test) {
-    Roll roll;
-    roll_dice(&roll, 3);
-    int* dice = get_dice(&roll);
-
-}
-END_TEST
 
 // START_TEST (roll_dice_is_independent) {
 //     Roll roll;
@@ -43,8 +36,6 @@ int main(void)
 
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, roll_dice_test);
-    tcase_add_test(tc1_1, get_dice_test);
-    // tcase_add_test(tc1_1, roll_dice_is_independent);
 
 
     srunner_run_all(sr, CK_ENV);
