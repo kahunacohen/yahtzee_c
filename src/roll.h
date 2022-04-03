@@ -3,6 +3,12 @@
 #define DIE_SIDES 6
 #define MAX_DICE_PER_ROLL 5
 
+/**
+ * A Roll is an independent roll of n dice.
+ * For simplicity, there is always a roll of
+ * 5 dice, but we specify n dice to take from
+ * and that's stored in the struct.
+ */
 typedef struct Roll {
     int   dice[MAX_DICE_PER_ROLL];
     int   num_dice;
@@ -10,7 +16,6 @@ typedef struct Roll {
 
 void roll_dice(Roll*, int num_dice);
 int roll_die(void);
-int* get_dice(Roll*);
 
 /**
  * Roll one die.
