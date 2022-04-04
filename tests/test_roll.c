@@ -1,13 +1,20 @@
 #include <stdio.h>
 #include <check.h>
 #include <stdbool.h>
-#include "../src/roll.h"
+#include "../src/turn.h"
 
+// START_TEST (roll_dice_test) {
+//     Roll roll;
+//     roll_dice(&roll, 1);
+//     fail_unless(roll.dice[0] > 0 && roll.dice[0] <= 6);
+// }
+// END_TEST
 
-START_TEST (roll_dice_test) {
-    Roll roll;
-    roll_dice(&roll, 1);
-    fail_unless(roll.dice[0] > 0 && roll.dice[0] <= 6);
+START_TEST (foo) {
+    init_dice();
+    Turn turn;
+    take_turn(&turn);
+    printf("turn first dice: %d\n", turn.rolls[0].dice[0]);
 }
 END_TEST
 
@@ -35,7 +42,9 @@ int main(void)
     int nf;
 
     suite_add_tcase(s1, tc1_1);
-    tcase_add_test(tc1_1, roll_dice_test);
+    //tcase_add_test(tc1_1, roll_dice_test);
+    tcase_add_test(tc1_1, foo);
+
 
 
     srunner_run_all(sr, CK_ENV);
