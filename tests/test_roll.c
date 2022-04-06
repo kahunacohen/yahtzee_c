@@ -13,7 +13,7 @@
 START_TEST (foo) {
     init_dice();
     Turn turn;
-    take_turn(&turn);
+    take_turn(&turn, true, true, true, true, true);
     printf("turn first dice: %d\n", turn.rolls[0].dice[0]);
 }
 END_TEST
