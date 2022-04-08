@@ -5,6 +5,7 @@
 
 #define DIE_SIDES 6
 #define MAX_DICE_PER_ROLL 5
+#define MAX_ROLLS  3
 
 /**
  * A Roll is an independent roll of n dice.
@@ -18,10 +19,15 @@ typedef struct Roll {
     bool  which_rolled[MAX_DICE_PER_ROLL];
 } Roll;
 
+typedef struct Turn {
+    Roll rolls[MAX_ROLLS];
+} Turn;
+
 void init_dice(void);
 int roll_die(void);
 Roll roll_dice(bool, bool, bool, bool, bool);
 void debug_dice_rolled(Roll*);
+void take_turn(Turn*);
 
 void init_dice() {
     srand(time(NULL));
@@ -84,4 +90,7 @@ void debug_dice_rolled(Roll* roll) {
             printf("In position %d and is a \"%d\"\n", i + 1, roll->dice[i]);
         }
     }
+}
+void take_turn(Turn* turn) {
+    return turn;
 }
