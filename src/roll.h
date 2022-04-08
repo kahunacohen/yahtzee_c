@@ -33,7 +33,9 @@ void init_dice() {
 int roll_die(void) {
     return (rand() % DIE_SIDES) + 1;
 }
-
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
 /**
  * Roll n dice.
  */
@@ -72,6 +74,7 @@ Roll roll_dice(bool first, bool second, bool third, bool fourth, bool fifth) {
         roll.which_rolled[4] = true;
     }
     roll.num_dice = num_dice;
+    qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
     return roll;
 }
 void debug_dice_rolled(Roll* roll) {
