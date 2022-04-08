@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <check.h>
 #include <stdbool.h>
-#include "../src/turn.h"
+#include "../src/roll.h"
 
 START_TEST (roll_dice_test) {
     init_dice();
