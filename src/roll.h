@@ -27,7 +27,7 @@ void init_dice(void);
 int roll_die(void);
 Roll roll_dice(bool, bool, bool, bool, bool);
 void debug_dice_rolled(Roll*);
-void take_turn(Turn*);
+void take_turn(Turn*, bool, bool, bool, bool, bool);
 
 void init_dice() {
     srand(time(NULL));
@@ -91,6 +91,6 @@ void debug_dice_rolled(Roll* roll) {
         }
     }
 }
-void take_turn(Turn* turn) {
-    return turn;
+void take_turn(Turn* turn, bool first, bool second, bool third, bool fourth, bool fifth) {
+    turn->rolls = roll_dice(first, second, third, fourth, fifth);
 }
