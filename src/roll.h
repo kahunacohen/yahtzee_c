@@ -92,5 +92,5 @@ void debug_dice_rolled(Roll* roll) {
     }
 }
 void take_turn(Turn* turn, bool first, bool second, bool third, bool fourth, bool fifth) {
-    turn->rolls = roll_dice(first, second, third, fourth, fifth);
+    //turn->rolls = roll_dice(first, second, third, fourth, fifth);
 }
