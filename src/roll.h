@@ -25,7 +25,7 @@ typedef struct Turn {
 
 void init_dice(void);
 int roll_die(void);
-Roll roll_dice(bool, bool, bool, bool, bool);
+Roll roll_dice(bool*);
 void debug_dice_rolled(Roll*);
 
 void init_dice() {
@@ -44,39 +44,19 @@ int cmpfunc (const void * a, const void * b) {
 /**
  * Roll n dice.
  */
-Roll roll_dice(bool first, bool second, bool third, bool fourth, bool fifth) {
+Roll roll_dice(bool* which_dice) {
     Roll roll;
-    // initialize which roll
 
-    // Always roll 5 dice. It makes it easier to have an array
-    // of a fixed size.
-    for (int i = 0; i < MAX_DICE_PER_ROLL; i++) {
-        roll.dice[i] = roll_die();
-        // init which rolled to false.
-        roll.which_rolled[i] = false;
-    }
     // set num_dice and which_rolled according to boolean
     // parameters.
     int num_dice = 0;
-    if (first) {
-        num_dice++;
-        roll.which_rolled[0] = true;
-    }
-    if (second) {
-        num_dice++;
-        roll.which_rolled[1] = true;
-    }
-    if(third) {
-        num_dice++;
-        roll.which_rolled[2] = true;
-    }
-    if (fourth) {
-        num_dice++;
-        roll.which_rolled[3] = true;
-    }
-    if (fifth) {
-        num_dice++;
-        roll.which_rolled[4] = true;
+    for (int i = 0; i <= MAX_DICE_PER_ROLL; i++) {
+        bool rolled = which_dice[i];
+        if (rolled) {
+            num_dice++;
+        }
+        roll.dice[i] = roll_die();
+        roll.which_rolled[i] = rolled;
     }
     roll.num_dice = num_dice;
     qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
