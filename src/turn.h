@@ -23,7 +23,7 @@ void take_turn(Turn* turn, int take, bool* which_dice) {
     if (take > 0) {
         // if not first roll, then the take the dice not rolled from last roll.
         Roll last_roll = turn->rolls[take - 1];
-        for (int i = 0; i <= MAX_DICE_PER_ROLL; i++) {
+        for (int i = 0; i <= MAX_DICE_PER_ROLL - 1; i++) {
             if (!which_dice[i]) {
                 // This one is not rolled, so use last roll.
                 roll.dice[i] = last_roll.dice[i];

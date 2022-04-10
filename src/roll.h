@@ -47,7 +47,7 @@ Roll roll_dice(bool* which_dice) {
     // set num_dice and which_rolled according to boolean
     // parameters.
     int num_dice = 0;
-    for (int i = 0; i <= MAX_DICE_PER_ROLL; i++) {
+    for (int i = 0; i <= MAX_DICE_PER_ROLL - 1; i++) {
         bool rolled = which_dice[i];
         if (rolled) {
             num_dice++;
@@ -56,12 +56,12 @@ Roll roll_dice(bool* which_dice) {
         roll.which_rolled[i] = rolled;
     }
     roll.num_dice = num_dice;
-    qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
+    //qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
     return roll;
 }
 void debug_roll(Roll* roll) {
     printf("You rolled %d dice total.\n", roll->num_dice);
-    for (int i = 0; i < MAX_DICE_PER_ROLL; i++) {
+    for (int i = 0; i < MAX_DICE_PER_ROLL -1; i++) {
         if (roll->which_rolled[i]) {
             printf("In position %d and is a \"%d\"\n", i + 1, roll->dice[i]);
         }
