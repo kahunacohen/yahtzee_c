@@ -19,14 +19,11 @@ typedef struct Roll {
     bool  which_rolled[MAX_DICE_PER_ROLL];
 } Roll;
 
-typedef struct Turn {
-    Roll rolls[MAX_ROLLS];
-} Turn;
 
 void init_dice(void);
 int roll_die(void);
 Roll roll_dice(bool*);
-void debug_dice_rolled(Roll*);
+void debug_roll(Roll*);
 
 void init_dice() {
     srand(time(NULL));
@@ -62,7 +59,7 @@ Roll roll_dice(bool* which_dice) {
     qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
     return roll;
 }
-void debug_dice_rolled(Roll* roll) {
+void debug_roll(Roll* roll) {
     printf("You rolled %d dice total.\n", roll->num_dice);
     for (int i = 0; i < MAX_DICE_PER_ROLL; i++) {
         if (roll->which_rolled[i]) {
