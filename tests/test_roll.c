@@ -13,8 +13,6 @@ START_TEST (take_turn_test) {
         int* first_rolled_dice = turn.rolls[0].dice;
         fail_unless(first_rolled_dice[i] >=1 && first_rolled_dice[i] <= 6);
     }
-    printf("\n");
-    // debug_roll(&turn.rolls[0]);
     // Take a second turn, rolling the first and last dice.
     take_turn(&turn, 1, (bool[]){true, false, false, false, true});
     for (int i = 0; i <= MAX_DICE_PER_ROLL - 1; i++) {

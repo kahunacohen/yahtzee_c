@@ -56,7 +56,7 @@ Roll roll_dice(bool* which_dice) {
         roll.which_rolled[i] = rolled;
     }
     roll.num_dice = num_dice;
-    //qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
+    // qsort(roll.dice, MAX_DICE_PER_ROLL, sizeof(int), cmpfunc);
     return roll;
 }
 void debug_roll(Roll* roll) {
