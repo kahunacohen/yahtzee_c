@@ -4,8 +4,14 @@
 #include "../src/turn.h"
 START_TEST (init_turn_test) {
     Turn * turn = init_turn();
-    fail_unless(turn->curr_roll == 0);
-    fail_unless(turn->rolls[2].dice[0] == 0);
+    for (int i = 0; i <= MAX_ROLLS - 1; i++) {
+        Roll roll = turn->rolls[i];
+        fail_unless(roll.num_dice == 0);
+        for (int j = 0; j <= MAX_DICE_PER_ROLL - 1; j++) {
+            fail_unless(roll.dice[j] == 0);
+            fail_unless(roll.which_rolled[j] == false);
+        }
+    }
     free(turn);
 } END_TEST
 // START_TEST (take_turn_test) {

@@ -11,6 +11,13 @@ Turn * init_turn(void);
 void take_turn(Turn *, int take, bool*);
 _Bool is_yahtzee(Turn *);
 
+/**
+ * @brief Returns a pointer to an initialized turn.
+ * An initialized turn has an array of 5 rolls, each one
+ * initialized to 0. Furhter, each roll indicates
+ * that each dice were not yet rolled by being set to false.  
+ * @return Turn* 
+ */
 Turn * init_turn() {
     struct Turn * turn = malloc(sizeof(*turn));
     if (!turn) {
@@ -20,17 +27,11 @@ Turn * init_turn() {
     turn->curr_roll = 0;
     for (int i = 0; i <= MAX_ROLLS -1; i++) {
         struct Roll roll;
-        roll.dice[0] = 0;
-        roll.dice[1] = 0;
-        roll.dice[2] = 0;
-        roll.dice[3] = 0;
-        roll.dice[4] = 0;
-        roll.num_dice = 0;
-        roll.which_rolled[0] = false;
-        roll.which_rolled[1] = false;
-        roll.which_rolled[2] = false;
-        roll.which_rolled[3] = false;
-        roll.which_rolled[4] = false;
+        for (int j = 0; j <= MAX_DICE_PER_ROLL - 1; j++) {
+            roll.dice[j] = 0;
+            roll.num_dice = 0;
+            roll.which_rolled[j] = false;
+        }
         turn->rolls[i] = roll;
     }
     return turn;
