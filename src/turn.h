@@ -14,8 +14,8 @@ _Bool is_yahtzee(Turn *);
 /**
  * @brief Returns a pointer to an initialized turn.
  * An initialized turn has an array of 5 rolls, each one
- * initialized to 0. Furhter, each roll indicates
- * that each dice were not yet rolled by being set to false.  
+ * initialized to 0. Further, each roll indicates
+ * that each die were not yet rolled by being set to false.  
  * @return Turn* 
  */
 Turn * init_turn() {
@@ -64,9 +64,18 @@ void take_turn(Turn* turn, int take, bool* which_dice) {
 
 
 _Bool is_yahtzee(Turn* turn) {
+    // For each roll.
     for (int i = 0; i <= MAX_ROLLS - 1; i++) {
         printf("roll\n");
-        printf("d: %d\n", turn->rolls[i].dice[0]);
+        // Are each of the dice the same?
+        int num_rolled = 0;
+        for (int j = 0; j <= MAX_DICE_PER_ROLL - 1; j++) {
+            int num = turn->rolls[i].dice[j];
+            // The die has been rolled
+            if (num != 0) {
+                printf("dice:%d\n", turn->rolls[i].dice[j]);
+            }
+        }
     }
     return true;
 }

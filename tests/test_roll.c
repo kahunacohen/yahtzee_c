@@ -44,26 +44,26 @@ START_TEST (take_turn_test) {
 }
 END_TEST
 
-// START_TEST (test_is_yahtzee) {
-//     Roll roll;
-//     Turn turn;
+START_TEST (test_is_yahtzee) {
+    Turn * turn = init_turn();
+    
+    // Set up a first roll, manually, that's a yahtzee!
+    turn->curr_roll = 0;
+    Roll roll;
+    // Set roll to all 6s
+    for (int i = 0; i <= MAX_DICE_PER_ROLL - 1; i++) {
+        roll.dice[i] = 6;
+        roll.which_rolled[i] = true;
+    }
 
-//     // Manually create a roll that's a yahtzee.
-//     roll.num_dice = 5;
-//     for (int i = 0; i <= MAX_DICE_PER_ROLL - 1; i++) {
-//         // Every dice is rolled.
-//         roll.which_rolled[i] = true;
+    // We rolled a yahtzee on the first roll!
+    roll.num_dice = 1;
+    turn->rolls[0] = roll;
 
-//         // Each one is a 1
-//         roll.dice[i] = 1;
-//     }
-
-//     // Set the turn's first roll to this roll.
-//     turn.rolls[0] = roll;
-//     turn.curr_roll = 0;
-//     is_yahtzee(&turn);
-// }
-// END_TEST
+    is_yahtzee(turn);
+    free(turn);
+}
+END_TEST
 
 
 int main(void)
@@ -76,7 +76,7 @@ int main(void)
     suite_add_tcase(s1, tc1_1);
     tcase_add_test(tc1_1, init_turn_test);
     tcase_add_test(tc1_1, take_turn_test);
-    // tcase_add_test(tc1_1, test_is_yahtzee);
+    tcase_add_test(tc1_1, test_is_yahtzee);
 
 
 
