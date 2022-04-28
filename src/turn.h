@@ -47,7 +47,6 @@ Turn * init_turn() {
  * @param which_dice - An array of booleans indicating which dice to roll.
  */
 void take_turn(Turn* turn, int take, bool* which_dice) {
-
     assert(take >= 0 && take <= MAX_DICE_PER_ROLL);
     Roll roll = roll_dice(which_dice);
     if (take > 0) {

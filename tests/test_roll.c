@@ -25,7 +25,7 @@ START_TEST (take_turn_test) {
         int* first_roll_dice = turn->rolls[0].dice;
         fail_unless(first_roll_dice[i] >=1 && first_roll_dice[i] <= 6);
     }
-    // Take a second turn, rolling the first and last dice.
+    // Take a second turn, rolling the first and fifth dice.
     take_turn(turn, 1, (bool[]){true, false, false, false, true});
     for (int i = 0; i <= MAX_DICE_PER_ROLL - 1; i++) {
         // Confirm the first and last die are different than the first.
@@ -35,7 +35,7 @@ START_TEST (take_turn_test) {
         if (i == 0 || i == 4) {
             fail_unless(first_roll_dice[i] != second_roll_dice[i]);
         } else {
-            // The dice not in the first or last position should be the same
+            // The dice that are NOT in the first or last position should be the same
             // since we didn't roll them from the last turn.
             fail_unless(first_roll_dice[i] == second_roll_dice[i]);
         }
