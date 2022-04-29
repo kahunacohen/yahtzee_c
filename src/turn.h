@@ -9,7 +9,7 @@ typedef struct Turn {
 Turn * init_turn(void);
 
 void take_turn(Turn *, int take, bool*);
-_Bool is_yahtzee(Turn *);
+// _Bool is_yahtzee(Turn *);
 
 /**
  * @brief Returns a pointer to an initialized turn.
@@ -63,19 +63,19 @@ void take_turn(Turn* turn, int take, bool* which_dice) {
 }
 
 
-_Bool is_yahtzee(Turn* turn) {
-    // For each roll.
-    for (int i = 0; i <= MAX_ROLLS - 1; i++) {
-        printf("roll\n");
-        // Are each of the dice the same?
-        int num_rolled = 0;
-        for (int j = 0; j <= MAX_DICE_PER_ROLL - 1; j++) {
-            int num = turn->rolls[i].dice[j];
-            // The die has been rolled
-            if (num != 0) {
-                printf("dice:%d\n", turn->rolls[i].dice[j]);
-            }
-        }
-    }
-    return true;
-}
+// _Bool is_yahtzee(Turn* turn) {
+//     // For each roll.
+//     for (int i = 0; i <= MAX_ROLLS - 1; i++) {
+//         printf("roll\n");
+//         // Are each of the dice the same?
+//         int num_rolled = 0;
+//         for (int j = 0; j <= MAX_DICE_PER_ROLL - 1; j++) {
+//             int num = turn->rolls[i].dice[j];
+//             // The die has been rolled
+//             if (num != 0) {
+//                 printf("dice:%d\n", turn->rolls[i].dice[j]);
+//             }
+//         }
+//     }
+//     return true;
+// }
