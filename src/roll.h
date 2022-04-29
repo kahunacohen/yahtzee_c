@@ -19,9 +19,9 @@ typedef struct Roll {
     bool  which_rolled[MAX_DICE_PER_ROLL];
 } Roll;
 
-
+// Prototypes
 void init_dice(void);
-int roll_die(void);
+int roll_roll_die(void);
 Roll roll_dice(bool*);
 void debug_roll(Roll*);
 
@@ -29,10 +29,12 @@ void init_dice() {
     srand(time(NULL));
 }
 
+
+
 /**
  * Roll one die.
  */
-int roll_die(void) {
+int roll_roll_die(void) {
     return (rand() % DIE_SIDES) + 1;
 }
 int cmpfunc (const void * a, const void * b) {
@@ -52,7 +54,7 @@ Roll roll_dice(bool* which_dice) {
         if (rolled) {
             num_dice++;
         }
-        roll.dice[i] = roll_die();
+        roll.dice[i] = roll_roll_die();
         roll.which_rolled[i] = rolled;
     }
     roll.num_dice = num_dice;
